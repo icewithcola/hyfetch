@@ -245,7 +245,7 @@ def run_neofetch_cmd(args: str, pipe: bool = False) -> str | None:
     Run neofetch command
     """
     if platform.system() != 'Windows':
-        full_cmd = ['/usr/bin/env', 'bash', get_command_path(), *shlex.split(args)]
+        full_cmd = [ if_file('/data/data/com.termux/files/usr/bin/env') or '/usr/bin/env', 'bash', get_command_path(), *shlex.split(args)]
 
     else:
         cmd = get_command_path().replace("\\", "/").replace("C:/", "/c/")
